@@ -1,2 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.fly.postop.httplibrary" />
+    package="com.fly.postop.httplibrary" >
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+</manifest>
