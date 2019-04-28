@@ -38,11 +38,11 @@ import okhttp3.Request;
  * 包    名 : com.fly.postop.code.http.sign
  * 作    者 : FLY
  * 创建时间 : 2018/9/26
- * 描述:
+ * 描述: 请求头获取
  */
 public class HttpSignHeader {
 
-    public static final String USER_TOKEN = "UserToken";
+    public static final String USER_TOKEN = "LoginUserToken";
 
     /**
      * 签名算法HmacSha256

@@ -39,11 +39,11 @@ public class UploadHelper {
     /**
      * 上传一张图片
      *
-     * @param uploadUrl 上传图片的服务器url
-     * @param filePath  图片路径
+     * @param uploadUrl 上传文件的服务器url
+     * @param filePath  文件路径
      * @return Observable
      */
-    public static Observable<ResponseBody> uploadImage(String uploadUrl, String filePath) {
+    public static Observable<ResponseBody> uploadFile(String uploadUrl, String filePath) {
         List<String> filePaths = new ArrayList<>();
         filePaths.add(filePath);
         return uploadFilesWithParams(uploadUrl, "uploaded_file", null, filePaths);
@@ -52,11 +52,11 @@ public class UploadHelper {
     /**
      * 只上传图片
      *
-     * @param uploadUrl 上传图片的服务器url
-     * @param filePaths 图片路径
+     * @param uploadUrl 上传文件的服务器url
+     * @param filePaths 文件路径
      * @return Observable
      */
-    public static Observable<ResponseBody> uploadImages(String uploadUrl, List<String> filePaths) {
+    public static Observable<ResponseBody> uploadFiles(String uploadUrl, List<String> filePaths) {
         return uploadFilesWithParams(uploadUrl, "uploaded_file", null, filePaths);
     }
 
@@ -64,9 +64,9 @@ public class UploadHelper {
      * 图片和参数同时上传的请求
      *
      * @param uploadUrl 上传图片的服务器url
-     * @param fileName  后台协定的接受图片的name（没特殊要求就可以随便写）
+     * @param fileName  后台协定的接受文件的name（没特殊要求就可以随便写）
      * @param paramsMap 普通参数
-     * @param filePaths 图片路径
+     * @param filePaths 文件路径
      * @return Observable
      */
     public static Observable<ResponseBody> uploadFilesWithParams(String uploadUrl, String fileName, Map<String, Object> paramsMap, List<String> filePaths) {

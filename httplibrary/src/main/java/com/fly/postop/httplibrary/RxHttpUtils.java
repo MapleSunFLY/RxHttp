@@ -8,6 +8,7 @@ import com.fly.postop.httplibrary.config.OkHttpConfig;
 import com.fly.postop.httplibrary.cookie.CookieJarImpl;
 import com.fly.postop.httplibrary.cookie.store.CookieStore;
 import com.fly.postop.httplibrary.download.DownloadHelper;
+import com.fly.postop.httplibrary.factory.ApiServiceFactory;
 import com.fly.postop.httplibrary.manager.RxHttpManager;
 import com.fly.postop.httplibrary.upload.UploadHelper;
 
@@ -98,6 +99,17 @@ public class RxHttpUtils {
     }
 
     /**
+     * 使用全局参数创建请求
+     *
+     * @param cls Class
+     * @param <K> K
+     * @return 返回
+     */
+    public static <K> K createApi(Class<K> cls) {
+        return ApiServiceFactory.getInstance().createApi(cls);
+    }
+
+    /**
      * 下载文件
      *
      * @param fileUrl 地址
@@ -114,8 +126,8 @@ public class RxHttpUtils {
      * @param filePath  文件路径
      * @return ResponseBody
      */
-    public static Observable<ResponseBody> uploadImg(String uploadUrl, String filePath) {
-        return UploadHelper.uploadImage(uploadUrl, filePath);
+    public static Observable<ResponseBody> uploadFile(String uploadUrl, String filePath) {
+        return UploadHelper.uploadFile(uploadUrl, filePath);
     }
 
     /**
@@ -125,8 +137,8 @@ public class RxHttpUtils {
      * @param filePaths 文件路径
      * @return ResponseBody
      */
-    public static Observable<ResponseBody> uploadImages(String uploadUrl, List<String> filePaths) {
-        return UploadHelper.uploadImages(uploadUrl, filePaths);
+    public static Observable<ResponseBody> uploadFiles(String uploadUrl, List<String> filePaths) {
+        return UploadHelper.uploadFiles(uploadUrl, filePaths);
     }
 
     /**
@@ -138,7 +150,7 @@ public class RxHttpUtils {
      * @param filePaths 文件路径
      * @return ResponseBody
      */
-    public static Observable<ResponseBody> uploadImagesWithParams(String uploadUrl, String fileName, Map<String, Object> paramsMap, List<String> filePaths) {
+    public static Observable<ResponseBody> uploadFilesWithParams(String uploadUrl, String fileName, Map<String, Object> paramsMap, List<String> filePaths) {
         return UploadHelper.uploadFilesWithParams(uploadUrl, fileName, paramsMap, filePaths);
     }
 

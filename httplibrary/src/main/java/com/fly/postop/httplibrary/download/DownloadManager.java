@@ -1,5 +1,7 @@
 package com.fly.postop.httplibrary.download;
 
+import android.text.TextUtils;
+
 import com.fly.postop.httplibrary.RxHttpUtils;
 
 import java.io.File;
@@ -56,7 +58,7 @@ public class DownloadManager {
 
             long sum = 0;
 
-            File dir = new File(null == destFileDir ? defaultDestFileDir : destFileDir);
+            File dir = new File(TextUtils.isEmpty(destFileDir)? defaultDestFileDir : destFileDir);
 
             if (!dir.exists()) {
                 dir.mkdirs();
