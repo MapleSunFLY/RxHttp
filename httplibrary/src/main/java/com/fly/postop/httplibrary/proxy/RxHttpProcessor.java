@@ -1,5 +1,7 @@
 package com.fly.postop.httplibrary.proxy;
 
+import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.fly.postop.httplibrary.RxHttpUtils;
@@ -40,7 +42,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
 
     @Override
-    public void doGet(String url, Map<String, String> params, Map<String, String> headers, final ICallBack callBack) {
+    public void doGet(String url, Map<String, Object> params, Map<String, String> headers, final ICallBack callBack) {
         RxHttpUtils.createApi(ApiService.class)
                 .doGet(url, params, headers)
                 .compose(Transformer.<String>switchSchedulers())
@@ -63,10 +65,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override
@@ -79,7 +78,7 @@ public class RxHttpProcessor implements IHttpProcessor {
     }
 
     @Override
-    public void doPost(String url, Map<String, String> params, Map<String, String> headers, final ICallBack callBack) {
+    public void doPost(String url, Map<String, Object> params, Map<String, String> headers, final ICallBack callBack) {
         RxHttpUtils.createApi(ApiService.class)
                 .doPost(url, params, headers)
                 .compose(Transformer.<String>switchSchedulers())
@@ -102,10 +101,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override
@@ -141,10 +137,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override
@@ -157,7 +150,7 @@ public class RxHttpProcessor implements IHttpProcessor {
     }
 
     @Override
-    public void doPut(String url, Map<String, String> params, Map<String, String> headers, final ICallBack callBack) {
+    public void doPut(String url, Map<String, Object> params, Map<String, String> headers, final ICallBack callBack) {
         RxHttpUtils.createApi(ApiService.class)
                 .doPut(url, params, headers)
                 .compose(Transformer.<String>switchSchedulers())
@@ -180,10 +173,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override
@@ -219,10 +209,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override
@@ -235,7 +222,7 @@ public class RxHttpProcessor implements IHttpProcessor {
     }
 
     @Override
-    public void doDelete(String url, Map<String, String> params, Map<String, String> headers, final ICallBack callBack) {
+    public void doDelete(String url, Map<String, Object> params, Map<String, String> headers, final ICallBack callBack) {
         RxHttpUtils.createApi(ApiService.class)
                 .doDelete(url, params, headers)
                 .compose(Transformer.<String>switchSchedulers())
@@ -258,10 +245,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override
@@ -297,10 +281,7 @@ public class RxHttpProcessor implements IHttpProcessor {
 
                     @Override
                     public void doOnNext(String s) {
-                        callBack.doOnError(s);
-                        if (mDisposable != null && !mDisposable.isDisposed()) {
-                            mDisposable.dispose();
-                        }
+                        callBack.doOnNext(s);
                     }
 
                     @Override

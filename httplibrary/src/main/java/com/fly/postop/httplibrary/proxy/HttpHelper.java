@@ -1,5 +1,8 @@
 package com.fly.postop.httplibrary.proxy;
 
+import android.support.v4.util.ArrayMap;
+import android.text.TextUtils;
+
 import com.fly.postop.httplibrary.interfaces.RestMethod;
 
 import java.util.ArrayList;
@@ -53,7 +56,7 @@ public class HttpHelper implements IHttpProcessor {
         this.doHttp(url, restMethod, null, object, null, callBack);
     }
 
-    public void doHttp(String url, String restMethod, Map<String, String> params, ICallBack callBack) {
+    public void doHttp(String url, String restMethod, Map<String, Object> params, ICallBack callBack) {
         this.doHttp(url, restMethod, params, null, null, callBack);
     }
 
@@ -61,11 +64,11 @@ public class HttpHelper implements IHttpProcessor {
         this.doHttp(url, restMethod, null, object, headers, callBack);
     }
 
-    public void doHttp(String url, String restMethod, Map<String, String> params, Map<String, String> headers, ICallBack callBack) {
+    public void doHttp(String url, String restMethod, Map<String, Object> params, Map<String, String> headers, ICallBack callBack) {
         this.doHttp(url, restMethod, params, null, headers, callBack);
     }
 
-    public void doHttp(String url, String restMethod, Map<String, String> params, Object object, Map<String, String> headers, ICallBack callBack) {
+    public void doHttp(String url, String restMethod, Map<String, Object> params, Object object, Map<String, String> headers, ICallBack callBack) {
         if (RestMethod.POST.equalsIgnoreCase(restMethod)) {
             if (object != null) this.doPost(url, object, headers, callBack);
             this.doPost(url, params, headers, callBack);
@@ -84,13 +87,21 @@ public class HttpHelper implements IHttpProcessor {
         this.doDelete(url, null, callBack);
     }
 
-    public void doGet(String url, Map<String, String> params, ICallBack callBack) {
+    public void doGet(String url, Map<String, Object> params, ICallBack callBack) {
         this.doDelete(url, null, callBack);
     }
 
 
     @Override
-    public void doGet(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack) {
+    public void doGet(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (params == null) params = new ArrayMap<>();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doGet(url, params, headers, callBack);
     }
 
@@ -98,7 +109,7 @@ public class HttpHelper implements IHttpProcessor {
         this.doDelete(url, null, callBack);
     }
 
-    public void doPost(String url, Map<String, String> params, ICallBack callBack) {
+    public void doPost(String url, Map<String, Object> params, ICallBack callBack) {
         this.doDelete(url, params, null, callBack);
     }
 
@@ -107,12 +118,28 @@ public class HttpHelper implements IHttpProcessor {
     }
 
     @Override
-    public void doPost(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack) {
+    public void doPost(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (params == null) params = new ArrayMap<>();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doPost(url, params, headers, callBack);
     }
 
     @Override
     public void doPost(String url, Object object, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (object == null) object = new Object();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doPost(url, object, headers, callBack);
     }
 
@@ -120,7 +147,7 @@ public class HttpHelper implements IHttpProcessor {
         this.doDelete(url, null, callBack);
     }
 
-    public void doPut(String url, Map<String, String> params, ICallBack callBack) {
+    public void doPut(String url, Map<String, Object> params, ICallBack callBack) {
         this.doDelete(url, params, null, callBack);
     }
 
@@ -129,12 +156,28 @@ public class HttpHelper implements IHttpProcessor {
     }
 
     @Override
-    public void doPut(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack) {
+    public void doPut(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (params == null) params = new ArrayMap<>();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doPut(url, params, headers, callBack);
     }
 
     @Override
     public void doPut(String url, Object object, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (object == null) object = new Object();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doPut(url, object, headers, callBack);
     }
 
@@ -142,7 +185,7 @@ public class HttpHelper implements IHttpProcessor {
         this.doDelete(url, null, callBack);
     }
 
-    public void doDelete(String url, Map<String, String> params, ICallBack callBack) {
+    public void doDelete(String url, Map<String, Object> params, ICallBack callBack) {
         this.doDelete(url, params, null, callBack);
     }
 
@@ -151,12 +194,28 @@ public class HttpHelper implements IHttpProcessor {
     }
 
     @Override
-    public void doDelete(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack) {
+    public void doDelete(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (params == null) params = new ArrayMap<>();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doDelete(url, params, headers, callBack);
     }
 
     @Override
     public void doDelete(String url, Object object, Map<String, String> headers, ICallBack callBack) {
+        if (!TextUtils.isEmpty(url) && url.startsWith("/")) {
+            url = url.substring(1);
+        }
+
+        if (object == null) object = new Object();
+
+        if (headers == null) headers = new ArrayMap<>();
+
         mIHttpProcessor.doDelete(url, object, headers, callBack);
     }
 

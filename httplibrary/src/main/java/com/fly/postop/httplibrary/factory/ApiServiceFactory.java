@@ -93,12 +93,10 @@ public class ApiServiceFactory {
         A api = (A) apiServiceCache.get(apiClass.getCanonicalName());
         if (api == null) {
             Retrofit retrofit = new RetrofitBuilder()
-                    .setBaseUrl(baseUrl)
                     .setCallAdapterFactory(callAdapterFactory)
                     .setConverterFactory(converterFactory)
                     .setOkHttpClient(okHttpClient)
                     .build();
-
             api = retrofit.create(apiClass);
             apiServiceCache.put(apiClass.getCanonicalName(), api);
         }

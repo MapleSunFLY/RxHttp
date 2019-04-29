@@ -1,5 +1,8 @@
 package com.fly.postop.httplibrary.retrofit;
 
+import android.text.TextUtils;
+
+import com.fly.postop.httplibrary.R;
 import com.fly.postop.httplibrary.RxHttpUtils;
 import com.fly.postop.httplibrary.config.OkHttpConfig;
 import com.fly.postop.httplibrary.cookie.store.SPCookieStore;
@@ -71,8 +74,11 @@ public class RetrofitBuilder {
 
     public Retrofit build() {
         Retrofit.Builder builder = new Retrofit.Builder();
+        if (TextUtils.isEmpty(baseUrl)) {
+            baseUrl = RxHttpUtils.getInstance().getContext().getString(R.string.http_url_head);
+        }
+        if (!TextUtils.isEmpty(baseUrl)) builder.baseUrl(baseUrl);
 
-        builder.baseUrl(baseUrl);
 
         if (callAdapterFactory == null || callAdapterFactory.length <= 0) {
             builder.addCallAdapterFactory(RxJava2CallAdapterFactory.create());

@@ -26,17 +26,17 @@ import java.util.Map;
  */
 public interface IHttpProcessor {
 
-    void doGet(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack);
+    void doGet(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack);
 
-    void doPost(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack);
+    void doPost(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack);
 
     void doPost(String url, Object object, Map<String, String> headers, ICallBack callBack);
 
-    void doPut(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack);
+    void doPut(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack);
 
     void doPut(String url, Object object, Map<String, String> headers, ICallBack callBack);
 
-    void doDelete(String url, Map<String, String> params, Map<String, String> headers, ICallBack callBack);
+    void doDelete(String url, Map<String, Object> params, Map<String, String> headers, ICallBack callBack);
 
     void doDelete(String url, Object object, Map<String, String> headers, ICallBack callBack);
 

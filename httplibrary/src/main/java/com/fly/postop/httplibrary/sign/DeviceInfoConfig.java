@@ -105,6 +105,7 @@ public class DeviceInfoConfig {
             ApplicationInfo appInfo = context.getApplicationContext().getPackageManager()
                     .getApplicationInfo(context.getApplicationContext().getPackageName(),
                             PackageManager.GET_META_DATA);
+            if (appInfo == null || appInfo.metaData == null) return "shangyi";
             String msg = appInfo.metaData.getString("BaiduMobAd_CHANNEL");
 
             LogUtils.d(TAG, " CHANNEL == " + msg);

@@ -369,11 +369,9 @@ public class OkHttpConfig {
          * 配置超时信息
          */
         private void setTimeout() {
-            int defaultTimeout = RxHttpUtils.getInstance().getContext().getResources().getInteger(R.integer.http_timeout_time);
-            defaultTimeout = defaultTimeout <= 0 ? 30 : defaultTimeout;
-            okHttpClientBuilder.readTimeout(readTimeout <= 0 ? defaultTimeout : readTimeout, TimeUnit.SECONDS);
-            okHttpClientBuilder.writeTimeout(writeTimeout <= 0 ? defaultTimeout : writeTimeout, TimeUnit.SECONDS);
-            okHttpClientBuilder.connectTimeout(connectTimeout <= 0 ? defaultTimeout : connectTimeout, TimeUnit.SECONDS);
+            okHttpClientBuilder.readTimeout(readTimeout <= 0 ? 30 : readTimeout, TimeUnit.SECONDS);
+            okHttpClientBuilder.writeTimeout(writeTimeout <= 0 ? 30 : writeTimeout, TimeUnit.SECONDS);
+            okHttpClientBuilder.connectTimeout(connectTimeout <= 0 ? 30 : connectTimeout, TimeUnit.SECONDS);
             okHttpClientBuilder.retryOnConnectionFailure(true);
         }
 

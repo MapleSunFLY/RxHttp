@@ -39,24 +39,24 @@ import retrofit2.http.Url;
 public interface ApiService {
 
     @GET
-    Observable<String> doGet(@Url String url, @QueryMap Map<String, String> params, @HeaderMap Map<String, String> headers);
+    Observable<String> doGet(@Url String url, @QueryMap Map<String, Object> params, @HeaderMap Map<String, String> headers);
 
     @FormUrlEncoded
     @POST
-    Observable<String> doPost(@Url String url, @FieldMap Map<String, String> params, @HeaderMap Map<String, String> headers);
+    Observable<String> doPost(@Url String url, @FieldMap Map<String, Object> params, @HeaderMap Map<String, String> headers);
 
     @Headers("Content-Type: application/json")
     @POST
     Observable<String> doPost(@Url String url, @Body Object object, @HeaderMap Map<String, String> headers);
 
     @PUT
-    Observable<String> doPut(@Url String url, @QueryMap Map<String, String> params, @HeaderMap Map<String, String> headers);
+    Observable<String> doPut(@Url String url, @QueryMap Map<String, Object> params, @HeaderMap Map<String, String> headers);
 
     @PUT
     Observable<String> doPut(@Url String url, @Body Object object, @HeaderMap Map<String, String> headers);
 
     @DELETE
-    Observable<String> doDelete(@Url String url, @QueryMap Map<String, String> params, @HeaderMap Map<String, String> headers);
+    Observable<String> doDelete(@Url String url, @QueryMap Map<String, Object> params, @HeaderMap Map<String, String> headers);
 
     @DELETE
     Observable<String> doDelete(@Url String url, @Body Object object, @HeaderMap Map<String, String> headers);

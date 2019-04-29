@@ -2,6 +2,8 @@ package com.fly.postop.httplibrary.interceptor;
 
 import android.util.Log;
 
+import com.shangyi.android.utils.LogUtils;
+
 import okhttp3.logging.HttpLoggingInterceptor;
 
 /**
@@ -50,7 +52,7 @@ public class RxHttpLogger implements HttpLoggingInterceptor.Logger {
         mMessage.append(message.concat("\n"));
         // 请求或者响应结束，打印整条日志
         if (message.startsWith("<-- END HTTP")) {
-            Log.e("RxHttpUtils", mMessage.toString());
+           // LogUtils.jsonFormatterLog("RxHttpUtils", mMessage.toString());
         }
     }
 }

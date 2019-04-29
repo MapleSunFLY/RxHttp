@@ -94,7 +94,7 @@ public class RxHttpUtils {
      */
     private void checkInitialize() {
         if (context == null || isDebug == null) {
-            throw new ExceptionInInitializerError("请先在全局Application中调用 HttpUtils.getInstance().init(this) 初始化！");
+            throw new ExceptionInInitializerError("请先在全局Application中调用  HttpUtils.getInstance().init(this,BuildConfig.DEBUG); 初始化！");
         }
     }
 

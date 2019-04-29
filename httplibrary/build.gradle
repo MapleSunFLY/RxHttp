@@ -13,7 +13,6 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         resValue("string", "http_url_head", "")
-        resValue("integer", "http_timeout_time", "")
         resValue("integer", "app_type", "")
         resValue("string", "http_type", "")
     }
